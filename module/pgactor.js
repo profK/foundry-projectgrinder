@@ -16,6 +16,17 @@ export class PGActor extends Actor {
             obj.d8 = Math.trunc(obj.value/5)
             obj.plus = obj.value % 5
         }
+        //calc skill rolls
+        for(let skillname in data.data.skills){
+            let skill = data.data.skills[skillname]
+            let statname = skill.current_stat
+            if (statname== undefined){
+                continue; // abort calc
+            }
+            let stat = data.data.stats[statname]
+            skill.d8 = Math.trunc(stat.value/5)
+            skill.plus = stat.plus+skill.adds
+        }
         return data;
     }
 }

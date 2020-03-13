@@ -106,7 +106,6 @@ export class SimpleActorSheet extends ActorSheet {
       this.DoAddSkill(skillname.val())
     })
 
-    $("")
 
 
     // Add or Remove Attribute
