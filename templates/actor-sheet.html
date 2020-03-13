@@ -6,6 +6,17 @@
             <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
         </div>
     </header>
+    {{!-- Data Lists --}}
+    <datalist id=skills_list >
+        {{#each data.all_skills}}
+        <option> {{this}} </option>
+        {{/each}}
+    </datalist>
+    <datalist id="stats_list" >
+        {{#each data.stats}}
+        <option> {{@key}} </option>
+        {{/each}}
+    </datalist>
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="attributes">Attributes</a>
@@ -16,7 +27,7 @@
     <section class="sheet-body">
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">
-            <table style="width:200px">
+            <table style="width:240px; float: left; margin: 5px; overflow:hidden">
                 <col width="90">
                 <col width="20">
                 <col width="30">
@@ -30,7 +41,7 @@
                 {{#each data.stats}}
                 <div class="resource">
                     <tr>
-                        <td>  {{@key}}</td> 
+                        <td>  {{@key}}</td>
                         <td>
                             <input type="text" name="data.stats.{{@key}}.value" value="{{value}}" data-dtype="Number" min-width="15" width="30">
                         </td>
@@ -42,9 +53,51 @@
                         <td>
                             <input type="text" name="data.stats.{{@key}}.damage" value="{{damage}}" data-dtype="Number">
                         </td>
+
                     </tr>
                 </div>
                 {{/each}}
+            </table>
+            <table style="width:400px; float: left; margin: 5px; overflow:hidden">
+                <col width="200px">
+                <col width="150px">
+                <col width="30px">
+                <col width="30px">
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Adds</th>
+                        <th>Stat</th>
+                        <th>Roll</th>
+                        <th>Advancement </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data.skills}}
+                    <tr>
+                        <td>
+                            {{@key}}
+                        </td>
+                        <td>
+                            <input id=type="text" name="data.skills.{{@key}}.adds" value="{{adds}}" data-dtype="Number">
+                        </td>
+                        <td>
+                            <input id="skill_stat_pulldown" name="data.skills.{{@key}}.current_stat"
+                                   value=""{{current_stat}}" type=text list=stats_list  />
+                        </td>
+                        <td style="text-align:center">
+                            <button class="roll_skill_button" data-statname="{{@key}}">
+                                {{d8}}D8+{{plus}}
+                            </button>
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <td> <input id="skill_pulldown" type=text list=skills_list  /> </td>
+                        <td colspan="4">
+                            <Button id="add_skill_button" >Add Skill</Button>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
         {{!-- Biography Tab --}}

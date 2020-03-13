@@ -85,10 +85,37 @@ export class SimpleActorSheet extends ActorSheet {
       this.DoStatRoll(button.getAttribute('data-statname'))
     });
 
+    // Clear skill pulldown
+    $("#skill_pulldown").click(ev => {
+      console.log("click")
+      $(ev.currentTarget).val("")
+    });
+
+    $("#add_skill_button").click(ev=>{
+      var skillname = $("#skill_pulldown")
+      console.log("add skill "+skillname.val())
+      this.DoAddSkill(skillname.val())
+    })
+
+    $("")
+
+
     // Add or Remove Attribute
     html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
   }
 
+  /* ------------------------------------------- */
+  async DoAddSkill(skillname){
+    const data = this.getData().data;
+    data.skills[skillname]=
+      {"name": skillname,
+      "adds": 0,
+      "advancement": 0
+      }
+    var actor = this.actor
+    actor.update({"data.skills":data.skills})
+  }
+s
   /* -------------------------------------------- */
 
  async DoStatRoll(statname){
