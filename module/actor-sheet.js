@@ -48,6 +48,8 @@ export class SimpleActorSheet extends ActorSheet {
 
   /* -------------------------------------------- */
 
+
+
   /**
    * Activate event listeners using the prepared sheet HTML
    * @param html {HTML}   The prepared HTML object ready to be rendered into the DOM
@@ -91,6 +93,13 @@ export class SimpleActorSheet extends ActorSheet {
       $(ev.currentTarget).val("")
     });
 
+    var clear_pulldowns = document.getElementsByClassName("clear_pulldown")
+    for (let el of clear_pulldowns) {
+      el.addEventListener("click", ev=>{
+        $(ev.currentTarget).val("")
+      }, false)
+    }
+
     $("#add_skill_button").click(ev=>{
       var skillname = $("#skill_pulldown")
       console.log("add skill "+skillname.val())
@@ -103,6 +112,8 @@ export class SimpleActorSheet extends ActorSheet {
     // Add or Remove Attribute
     html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
   }
+
+
 
   /* ------------------------------------------- */
   async DoAddSkill(skillname){

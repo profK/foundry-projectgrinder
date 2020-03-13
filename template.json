@@ -139,7 +139,7 @@
   },
   "Item": {
     "types": [
-      "item",
+      "item"
     ],
     "item": {
       "description": "",

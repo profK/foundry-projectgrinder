@@ -43,7 +43,8 @@
                     <tr>
                         <td>  {{@key}}</td>
                         <td>
-                            <input type="text" name="data.stats.{{@key}}.value" value="{{value}}" data-dtype="Number" min-width="15" width="30">
+                            <input type="text" name="data.stats.{{@key}}.value" value="{{value}}" data-dtype="Number" min-width="15"
+                                   width="30">
                         </td>
                         <td style="text-align:center"> 
                             <button class="roll_stat_button" data-statname="{{@key}}">
@@ -60,8 +61,8 @@
             </table>
             <table style="width:400px; float: left; margin: 5px; overflow:hidden">
                 <col width="200px">
-                <col width="150px">
                 <col width="30px">
+                <col width="150px">
                 <col width="30px">
                 <thead>
                     <tr>
@@ -79,11 +80,13 @@
                             {{@key}}
                         </td>
                         <td>
-                            <input id=type="text" name="data.skills.{{@key}}.adds" value="{{adds}}" data-dtype="Number">
+                            <input type="text" name="data.skills.{{@key}}.adds" value="{{adds}}" data-dtype="Number"
+                            min-width="15px" width="30">
                         </td>
                         <td>
-                            <input id="skill_stat_pulldown" name="data.skills.{{@key}}.current_stat"
-                                   value=""{{current_stat}}" type=text list=stats_list  />
+                            <input class="clear_pulldown" name="data.skills.{{@key}}.current_stat"
+                                   value="{{current_stat}}" type=text list=stats_list
+                                   min-width="15px" width="30"/>
                         </td>
                         <td style="text-align:center">
                             <button class="roll_skill_button" data-statname="{{@key}}">
