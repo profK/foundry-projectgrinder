@@ -32,14 +32,16 @@
                 <col width="20">
                 <col width="20">
                 <col width="50">
-                <tr>
-                    <th>Statistic</th>
-                    <th>Value</th>
-                    <th>Damage</th>
-                    <th>Roll</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Statistic</th>
+                        <th>Value</th>
+                        <th>Damage</th>
+                        <th>Roll</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {{#each data.stats}}
-                <div class="resource">
                     <tr>
                         <td>  {{@key}}</td>
                         <td>
@@ -56,8 +58,8 @@
                         </td>
 
                     </tr>
-                </div>
                 {{/each}}
+                </tbody>
             </table>
             <table style="width:240px; float: left; margin: 5px; overflow:hidden">
                 <col width="200px" />

@@ -146,9 +146,11 @@ s
      rollstr = rollstr.concat(modifier.toString())
    }
    console.log("rolling ".concat(rollstr))
-   new Roll(rollstr).toMessage({
+   let roll =new Roll(rollstr).toMessage()
+   rollstr.toMessage({
      flavor: "Makes a(n) "+statname+" roll..."
    })
+
  }
 
   async DoSkillRoll(skillname){
@@ -165,9 +167,10 @@ s
     rollstr = rollstr.concat(skill.plusstr)
 
     console.log("rolling ".concat(rollstr))
-    new Roll(rollstr).toMessage({
-      flavor: "Makes a(n) "+skillname+" roll based on "+skill.current_stat+"..."
-    })
+    new Roll(rollstr).roll().toMessage({
+        flavor: "Makes a(n) "+skillname+" roll based on "+skill.current_stat+"..."
+      }
+    )
 
 
   }
