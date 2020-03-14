@@ -10,46 +10,46 @@
           "value": 10,
           "min": 0,
           "max": 20,
-          "damage": 0,
           "d8": 2,
           "plus": 0,
-          "damage": 0
+          "damage": 0,
+          "plusstr": ""
         },
         "agility": {
           "value": 10,
           "min": 0,
           "max": 20,
-          "damage": 0,
           "d8": 2,
           "plus": 0,
-          "damage": 0
+          "damage": 0,
+          "plusstr": ""
         },
         "strength": {
           "value": 10,
           "min": 0,
           "max": 20,
-          "damage": 0,
           "d8": 2,
           "plus": 0,
-          "damage": 0
+          "damage": 0,
+          "plusstr": ""
         },
         "toughness": {
           "value": 10,
           "min": 0,
           "max": 20,
-          "damage": 0,
           "d8": 2,
           "plus": 0,
-          "damage": 0
+          "damage": 0,
+          "plusstr": ""
         },
         "perception": {
           "value": 10,
           "min": 0,
           "max": 20,
-          "damage": 0,
           "d8": 2,
           "plus": 0,
-          "damage": 0
+          "damage": 0,
+          "plusstr": ""
         },
         "mind": {
           "value": 10,
@@ -57,43 +57,43 @@
           "max": 20,
           "d8": 0,
           "plus": 0,
-          "damage": 0
+          "damage": 0,
+          "plusstr": ""
         },
         "spirituality": {
           "value": 10,
           "min": 0,
           "max": 20,
-          "damage": 0,
           "d8": 2,
           "plus": 0,
-          "damage": 0
+          "damage": 0,
+          "plusstr": ""
         },
         "willpower": {
           "value": 10,
           "min": 0,
-          "max": 20,
-          "damage": 0,
           "d8": 2,
           "plus": 0,
-          "damage": 0
+          "damage": 0,
+          "plusstr": ""
         },
         "beauty": {
           "value": 10,
           "min": 0,
           "max": 20,
-          "damage": 0,
           "d8": 2,
           "plus": 0,
-          "damage": 0
+          "damage": 0,
+          "plusstr": ""
         },
         "presence": {
           "value": 10,
           "min": 0,
           "max": 20,
-          "damage": 0,
           "d8": 2,
           "plus": 0,
-          "damage": 0
+          "damage": 0,
+          "plusstr": ""
         }
       },
       "skills": {},

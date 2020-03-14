@@ -28,15 +28,15 @@
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">
             <table style="width:240px; float: left; margin: 5px; overflow:hidden">
-                <col width="90">
+                <col width="80">
                 <col width="20">
-                <col width="30">
-                <col width="30">
+                <col width="20">
+                <col width="50">
                 <tr>
                     <th>Statistic</th>
                     <th>Value</th>
-                    <th>Roll</th>
                     <th>Damage</th>
+                    <th>Roll</th>
                 </tr>
                 {{#each data.stats}}
                 <div class="resource">
@@ -46,13 +46,13 @@
                             <input type="text" name="data.stats.{{@key}}.value" value="{{value}}" data-dtype="Number" min-width="15"
                                    width="30">
                         </td>
-                        <td style="text-align:center"> 
-                            <button class="roll_stat_button" data-statname="{{@key}}">
-                                {{d8}}D8+{{plus}} 
-</button>
-                        </td>
                         <td>
                             <input type="text" name="data.stats.{{@key}}.damage" value="{{damage}}" data-dtype="Number">
+                        </td>
+                        <td style="text-align:center">
+                            <button class="roll_stat_button" data-statname="{{@key}}">
+                                {{d8}}D8{{plusstr}}
+                            </button>
                         </td>
 
                     </tr>
@@ -109,7 +109,7 @@
                 <thead>
                 <tr>
                     <th>Skill</th>
-                    <th>Adds</th>
+                    <th>D6</th>
                     <th>Stat</th>
                     <th>Roll</th>
                     <th>Advancement </th>
@@ -122,7 +122,7 @@
                         {{@key}}
                     </td>
                     <td>
-                        <input type="text" name="data.skills.{{@key}}.adds" value="{{adds}}" data-dtype="Number"
+                        <input type="text" name="data.skills.{{@key}}.d6" value="{{d6}}" data-dtype="Number"
                                min-width="15px" width="30">
                     </td>
                     <td>
@@ -132,7 +132,7 @@
                     </td>
                     <td style="text-align:center">
                         <button class="roll_skill_button" data-skillname="{{@key}}">
-                            {{d8}}D8+{{plus}}
+                            {{d8}}D8+{{d6}}D6{{plusstr}}
                         </button>
                     </td>
                     <td>

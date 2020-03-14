@@ -125,7 +125,7 @@ export class SimpleActorSheet extends ActorSheet {
     const data = this.getData().data;
     data.skills[skillname]=
       {"name": skillname,
-      "adds": 0,
+      "d6": 0,
       "advancement": 0
       }
     var actor = this.actor
@@ -155,13 +155,15 @@ s
     console.log("doing skill roll")
     const data = this.getData().data;
     const skill = data.skills[skillname]
-    let rollstr = skill.d8.toString().concat("d8")
-    let modifier = skill.plus
-    if (modifier >0 ){
-      rollstr = rollstr.concat("+",modifier.toString())
-    } else if (modifier<0) {
-      rollstr = rollstr.concat(modifier.toString())
+    let rollstr = ""
+    if (skill.d8>0){
+      rollstr = rollstr.concat( skill.d8.toString(),"D8")
     }
+    if (skill.d6>0){
+      rollstr = rollstr.concat("+",skill.d6.toString(),"D6x6")
+    }
+    rollstr = rollstr.concat(skill.plusstr)
+
     console.log("rolling ".concat(rollstr))
     new Roll(rollstr).toMessage({
       flavor: "Makes a(n) "+skillname+" roll based on "+skill.current_stat+"..."

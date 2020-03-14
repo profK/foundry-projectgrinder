@@ -15,6 +15,14 @@ export class PGActor extends Actor {
             var obj = data.data.stats[stat]
             obj.d8 = Math.trunc(obj.value/5)
             obj.plus = obj.value % 5
+            let tot = obj.plus-obj.damage
+            if (tot<0) {
+                obj.plusstr = tot.toString()
+            } else if (tot>0){
+                obj.plusstr = "+" + tot.toString()
+            } else {
+                obj.plusstr = ""
+            }
         }
         //calc skill rolls
         for(let skillname in data.data.skills){
@@ -25,7 +33,8 @@ export class PGActor extends Actor {
             }
             let stat = data.data.stats[statname]
             skill.d8 = Math.trunc(stat.value/5)
-            skill.plus = stat.plus+skill.adds-stat.damage
+            skill.plusstr = stat.plusstr
+
         }
         return data;
     }
