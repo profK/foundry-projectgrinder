@@ -25,7 +25,7 @@ export class PGActor extends Actor {
             }
             let stat = data.data.stats[statname]
             skill.d8 = Math.trunc(stat.value/5)
-            skill.plus = stat.plus+skill.adds
+            skill.plus = stat.plus+skill.adds-stat.damage
         }
         return data;
     }

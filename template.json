@@ -97,6 +97,16 @@
         }
       },
       "skills": {},
+      "giftpoints": 0,
+      "convictions1": "",
+      "convictions2": "",
+      "convictions3": "",
+      "gifts1" : "",
+      "gifts2" : "",
+      "gifts3" : "",
+      "flaws1" : "",
+      "flaws2" : "",
+      "flaws3" : "",
       "attributes": {},
       "all_skills": [
         "Acrobatics",

@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<form id="pgactor_form" class="{{cssClass}}" autocomplete="off">
     {{!-- Sheet Header --}}
     <header class="sheet-header">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
@@ -19,8 +19,8 @@
     </datalist>
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="attributes">Attributes</a>
-        <a class="item" data-tab="description">Description</a>
+        <a class="item" data-tab="attributes">Statistics</a>
+        <a class="item" data-tab="skills">Skills</a>
         <a class="item" data-tab="items">Items</a>
     </nav>
     {{!-- Sheet Body --}}
@@ -59,50 +59,103 @@
                 </div>
                 {{/each}}
             </table>
-            <table style="width:400px; float: left; margin: 5px; overflow:hidden">
-                <col width="200px">
-                <col width="30px">
-                <col width="150px">
-                <col width="30px">
+            <table style="width:240px; float: left; margin: 5px; overflow:hidden">
+                <col width="200px" />
                 <thead>
                     <tr>
-                        <th>Skill</th>
-                        <th>Adds</th>
-                        <th>Stat</th>
-                        <th>Roll</th>
-                        <th>Advancement </th>
+                        <th>Convictions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each data.skills}}
                     <tr>
                         <td>
-                            {{@key}}
+                            <textarea name="data.convictions1" rows="4"
+                             data-dtype="String" >{{data.convictions1}}</textarea>
                         </td>
-                        <td>
-                            <input type="text" name="data.skills.{{@key}}.adds" value="{{adds}}" data-dtype="Number"
-                            min-width="15px" width="30">
-                        </td>
-                        <td>
-                            <input class="clear_pulldown" name="data.skills.{{@key}}.current_stat"
-                                   value="{{current_stat}}" type=text list=stats_list
-                                   min-width="15px" width="30"/>
-                        </td>
-                        <td style="text-align:center">
-                            <button class="roll_skill_button" data-statname="{{@key}}">
-                                {{d8}}D8+{{plus}}
-                            </button>
                     </tr>
-                    {{/each}}
                     <tr>
-                        <td> <input id="skill_pulldown" type=text list=skills_list  /> </td>
-                        <td colspan="4">
-                            <Button id="add_skill_button" >Add Skill</Button>
+                        <td>
+                             <textarea name="data.convictions2"   rows="4" >{{data.convictions2}}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea name="data.convictions3"  rows="4" >{{data.convictions3}}</textarea>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <table style="width:60px; float: left; margin: 5px; overflow:hidden">
+                <col width="45px" >
+                <thead>
+                    <th>Gift Points</th>
+                </thead>
+                <tbody>
+                    <td>
+                        <input type="text" name="data.giftpoints" value="{{data.giftpoints}}" data-dtype="Number">
+                    </td>
+                </tbody>
+            </table>
         </div>
+
+        {{!-- Skills Tab --}}
+        <div class="tab skills" data-group="primary" data-tab="skills">
+            <table style="width:550px; float: left; margin: 5px; overflow:hidden">
+                <col width="100px">
+                <col width="30px">
+                <col width="100px">
+                <col width="75px">
+                <col width="150px">
+                <thead>
+                <tr>
+                    <th>Skill</th>
+                    <th>Adds</th>
+                    <th>Stat</th>
+                    <th>Roll</th>
+                    <th>Advancement </th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each data.skills}}
+                <tr>
+                    <td>
+                        {{@key}}
+                    </td>
+                    <td>
+                        <input type="text" name="data.skills.{{@key}}.adds" value="{{adds}}" data-dtype="Number"
+                               min-width="15px" width="30">
+                    </td>
+                    <td>
+                        <input class="clear_pulldown" name="data.skills.{{@key}}.current_stat"
+                               value="{{current_stat}}" type=text list=stats_list
+                               min-width="15px" width="30"/>
+                    </td>
+                    <td style="text-align:center">
+                        <button class="roll_skill_button" data-skillname="{{@key}}">
+                            {{d8}}D8+{{plus}}
+                        </button>
+                    </td>
+                    <td>
+                        <fieldset min-width="50px" width="50px">
+                            <input type="checkbox" />
+                            <input type="checkbox" />
+                            <input type="checkbox" />
+                            <input type="checkbox" />
+                            <input type="checkbox" />
+                        </fieldset>
+                    </td>
+                </tr>
+                {{/each}}
+                <tr>
+                    <td> <input id="skill_pulldown" type=text list=skills_list  /> </td>
+                    <td colspan="4">
+                        <Button id="add_skill_button" >Add Skill</Button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
         {{!-- Biography Tab --}}
         <div class="tab biography active" data-group="primary" data-tab="description">
             {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}

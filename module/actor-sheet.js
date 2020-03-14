@@ -87,6 +87,12 @@ export class SimpleActorSheet extends ActorSheet {
       this.DoStatRoll(button.getAttribute('data-statname'))
     });
 
+    // hook skil lroll buttons
+    html.find('.roll_skill_button').click(ev =>{
+      const button = ev.currentTarget
+      this.DoSkillRoll(button.getAttribute('data-skillname'))
+    });
+
     // Clear skill pulldown
     $("#skill_pulldown").click(ev => {
       console.log("click")
@@ -143,9 +149,26 @@ s
    new Roll(rollstr).toMessage({
      flavor: "Makes a(n) "+statname+" roll..."
    })
-
-
  }
+
+  async DoSkillRoll(skillname){
+    console.log("doing skill roll")
+    const data = this.getData().data;
+    const skill = data.skills[skillname]
+    let rollstr = skill.d8.toString().concat("d8")
+    let modifier = skill.plus
+    if (modifier >0 ){
+      rollstr = rollstr.concat("+",modifier.toString())
+    } else if (modifier<0) {
+      rollstr = rollstr.concat(modifier.toString())
+    }
+    console.log("rolling ".concat(rollstr))
+    new Roll(rollstr).toMessage({
+      flavor: "Makes a(n) "+skillname+" roll based on "+skill.current_stat+"..."
+    })
+
+
+  }
 
   /* -------------------------------------------- */
 
