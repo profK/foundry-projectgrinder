@@ -32,8 +32,10 @@ export class PGActor extends Actor {
                 continue; // abort calc
             }
             let stat = data.data.stats[statname]
-            skill.d8 = Math.trunc(stat.value/5)
-            skill.plusstr = stat.plusstr
+            if (stat!=undefined) {
+                skill.d8 = Math.trunc(stat.value / 5)
+                skill.plusstr = stat.plusstr
+            }
 
         }
         return data;

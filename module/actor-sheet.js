@@ -112,7 +112,10 @@ export class SimpleActorSheet extends ActorSheet {
       this.DoAddSkill(skillname.val())
     })
 
-
+    $("#roll_button").click(ev=>{
+      console.log('show roll dialog')
+      $("#roll_dialog").show()
+    })
 
     // Add or Remove Attribute
     html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
