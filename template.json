@@ -191,15 +191,15 @@
     }
   },
   "Item": {
-    "types": [
-      "item"
-    ],
+    "slots": "left_hand,right_hand,both_hands,armor",
+    "types": ["item"],
     "item": {
+      "name": "",
       "description": "",
-      "quantity": 1,
-      "weight": 0,
-      "attributes": {}
+      "must_be_equipped": true,
+      "slots_occupied": [],
+      "actions": [],
+      "equipped": false
     }
-
   }
 }

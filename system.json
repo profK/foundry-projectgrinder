@@ -14,7 +14,7 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "deftness",
   "secondaryTokenAttribute": "agility",
-  "url": "https://gitlab.com/foundrynet/worldbuilding/",
-  "manifest": "https://gitlab.com/foundrynet/worldbuilding/raw/master/system.json",
-  "download": "https://gitlab.com/foundrynet/worldbuilding/-/archive/master/worldbuilding-master.zip"
+  "url": "",
+  "manifest": "",
+  "download": ""
 }

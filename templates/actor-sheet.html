@@ -27,6 +27,11 @@
         <option> {{name}} </option>
         {{/each}}
     </datalist>
+    <datalist id="gifts_list">
+        {{#each data.gifts}}
+        <option> {{name}} </option>
+        {{/each}}
+    </datalist>
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="attributes">Statistics</a>
@@ -45,6 +50,27 @@
                 <label for="dialog_roll_conviction">Conviction</label>
                 <input id="dialog_roll_conviction" class="clear_pulldown"  type=text list=convictions_list
                        min-width="15px" width="30"/>
+                <div style="display:flex; flex-direction: row" >
+                    <div>
+                        <label for="dialog_roll_gift" >Gift</label>
+                        <input id="dialog_roll_gift" class="clear_pulldown"  type=text list=gifts_list
+                               min-width="50px" style="flex:auto;"/>
+                    </div>
+                    <div>
+                        <label for="dialog_roll_gift_d6">D6</label>
+                        <input id="dialog_roll_gift_d6" class="clear_pulldown"  type=text data-dtype="Number"
+                               min-width="15px" style="flex:none; width:50px;"/>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 10px;margin-bottom: 10px" >
+                    <label for="dialog_roll_dn">Difficulty (DN)</label>
+                    <input id="dialog_roll_dn"  type=text data-dtype="Number"
+                           min-width="15px" style="width:30px;"/>
+                </div>
+                <div style="display:flex; flex-direction: row" >
+                    <button id="dialog_roll_cancel_button">CANCEL</button>
+                    <button id="dialog_roll_button">ROLL</button>
+                </div>
             </dialog>
         </div>
     </nav>

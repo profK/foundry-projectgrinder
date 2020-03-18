@@ -13,6 +13,7 @@ import { PGActor } from "./pgactor.js";
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 
+
 Hooks.once("init", async function() {
   console.log(`Initializing Simple Worldbuilding System`);
 
@@ -22,6 +23,21 @@ Hooks.once("init", async function() {
 	 */
 	CONFIG.initiative.formula = "1d20";
     CONFIG.Actor.entityClass = PGActor;
+
+    CONFIG.stats = [
+        "deftness", "agility", "strength","toughness", "perception",
+        "mind", "spirituality","willpower", "beauty", "presence"
+    ]
+    CONFIG.skills = [
+        "Acrobatics", "Air vehicles", "Area of Knowledge", "Beast Riding", "Charm",
+        "Climbing", "Dodge", "Energy Weapons", "Find", "Fire Combat", "First Aid",
+        "Heavy Weapons", "Hide", "Intimidation", "Land Vehicle", "Language",
+        "Lifting", "Long Jumping", "Maneuver", "Melee Weapons", "Missile Weapons",
+        "Persuasion", "Prestidigitation", "Professional Skill", "Running",
+        "Security Systems", "Stealth", "Survival", "Swimming", "Taunt",
+        "Test of Will", "Tracking", "Trick", "Unarmed Combat", "Water Vehicles"
+    ]
+
 
 
   // Register sheet application classes
