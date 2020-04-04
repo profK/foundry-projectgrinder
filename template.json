@@ -4,6 +4,7 @@
       "character"
     ],
     "character": {
+      "form_data": {},
       "biography": "",
       "stats": {
         "deftness": {
@@ -198,7 +199,7 @@
       "description": "",
       "must_be_equipped": true,
       "slots_occupied": [],
-      "actions": [],
+      "actions": {},
       "equipped": false
     }
   }

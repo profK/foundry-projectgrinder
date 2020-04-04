@@ -1,6 +1,9 @@
 /**
  * Extend the basic ItemSheet with some very simple modifications
  */
+
+import UUIDjs from "./uuid.js"
+
 export class SimpleItemSheet extends ItemSheet {
   constructor(...args) {
     super(...args);
@@ -36,6 +39,7 @@ export class SimpleItemSheet extends ItemSheet {
     data.dtypes = ["String", "Number", "Boolean"];
     data.data.all_stats = CONFIG.stats
     data.data.all_skills = CONFIG.skills
+    data.data.isGM = game.user.isGM
     return data;
   }
 
@@ -67,7 +71,6 @@ export class SimpleItemSheet extends ItemSheet {
     }
 
     $("#add_action_button").click(ev=>{
-
       console.log("add action ")
       this.DoAddAction()
     })
@@ -77,12 +80,13 @@ export class SimpleItemSheet extends ItemSheet {
  async DoAddAction(){
     var data = this.getData().data
     var newitem = new Object({
+      "guid": UUIDjs.create(),
       "name":"",
       "stat": "",
       "skill": "",
       "adds": 0
     })
-    data.actions[data.actions.length] = newitem
+    data.actions[newitem.guid] = newitem
     var item = this.item
     item.update({"data.actions":data.actions})
   }
@@ -99,4 +103,5 @@ export class SimpleItemSheet extends ItemSheet {
     // Update the Item
     return this.object.update(formData);
   }
+
 }

@@ -2,6 +2,7 @@
  * Extend the basic ActorSheet with some very simple modifications
  */
 
+import UUIDjs from "./uuid.js"
 
 export class SimpleActorSheet extends ActorSheet {
   constructor(...args) {
@@ -45,6 +46,7 @@ export class SimpleActorSheet extends ActorSheet {
 
     return data;
   }
+
 
   /* -------------------------------------------- */
 
@@ -117,11 +119,29 @@ export class SimpleActorSheet extends ActorSheet {
       $("#roll_dialog").show()
     })
 
-    // Add or Remove Attribute
-    html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
+    var action_buttons = document.getElementsByClassName("action_button")
+    for (let el of action_buttons) {
+      el.addEventListener("click", ev=> {
+        const button = ev.currentTarget
+        this.DoItemAction(button.getAttribute('data-itemkey'),
+            button.getAttribute('data-actionkey'))
+      })
+    }
   }
 
-
+  /* ------------------------------------------- */
+  async DoItemAction(itemid,actionkey){
+    const alldata = this.getData()
+    const data = alldata.data
+    const item = alldata.actor.items[parseInt(itemid,10)]
+    const action = item.data.actions[actionkey]
+    const dlg =$("#roll_action_dialog")
+    data.form_data.current_item_name = item.name
+    data.form_data.current_action_name = action.name
+    const actor = this.actor
+    actor.update({"data.form_data":data.form_data})
+    dlg.show()
+  }
 
   /* ------------------------------------------- */
   async DoAddSkill(skillname){
@@ -174,38 +194,23 @@ s
         flavor: "Makes a(n) "+skillname+" roll based on "+skill.current_stat+"..."
       }
     )
-
-
-  }
-
-  /* -------------------------------------------- */
-
-  async _onClickAttributeControl(event) {
-    event.preventDefault();
-    const a = event.currentTarget;
-    const action = a.dataset.action;
-    const attrs = this.object.data.data.attributes;
-    const form = this.form;
-
-    // Add new attribute
-    if ( action === "create" ) {
-      const nk = Object.keys(attrs).length + 1;
-      let newKey = document.createElement("div");
-      newKey.innerHTML = `<input type="text" name="data.attributes.attr${nk}.key" value="attr${nk}"/>`;
-      newKey = newKey.children[0];
-      form.appendChild(newKey);
-      await this._onSubmit(event);
-    }
-
-    // Remove existing attribute
-    else if ( action === "delete" ) {
-      const li = a.closest(".attribute");
-      li.parentElement.removeChild(li);
-      await this._onSubmit(event);
-    }
   }
 
   /* -------------------------------------------- */
 
 
+
+
+  /* -------------------------------------------- */
+
+
+}
+
+function findSubObject(parent,fn) {
+  for (let obj in parent)
+  {
+    if (fn(obj)) {
+      return obj;
+    }
+  }
 }

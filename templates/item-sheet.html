@@ -43,28 +43,47 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    {{#if data.isGM}}
                     {{#each data.actions}}
                     <tr>
                         <td>
-                            <input name="data.actions.{{@index}}.name" type="text" value="{{name}}"
+                            <input name="data.actions.{{@key}}.name" type="text" value="{{name}}"
                                    placeholder="Name"/>
                         </td>
                         <td>
-                            <input class="clear_pulldown" name="data.actions.{{@index}}.stat"
+                            <input class="clear_pulldown" name="data.actions.{{@key}}.stat"
                                    value="{{stat}}" type=text list=stats_list
                                    min-width="15px" width="30"/>
                         </td>
                         <td>
-                            <input class="clear_pulldown" name="data.actions.{{@index}}.skill"
+                            <input class="clear_pulldown" name="data.actions.{{@key}}.skill"
                                    value="{{skill}}" type=text list=skills_list
                                    min-width="15px" width="30"/>
                         </td>
                         <td>
-                            <input type="text" name="data.actions.{{@index}}.adds" value="{{adds}}" data-dtype="Number"
+                            <input type="text" name="data.actions.{{@key}}.adds" value="{{adds}}" data-dtype="Number"
                                    min-width="15px" width="30">
                         </td>
-                    </tr>
                     {{/each}}
+                    </tr>
+                    {{else}}
+                    {{#each data.actions}}
+                    <tr>
+                        <td>
+                            <Button id="action_roll_button">{{name}}</Button>
+                        </td>
+                        <td>
+                            {{stat}}
+                        </td>
+                        <td>
+                            {{skill}}
+                        </td>
+                        <td>
+                            {{adds}}
+                        </td>
+                    {{/each}}
+                    {{/if}}
                 </tbody>
             </table>
             <button id="add_action_button">Add Action</button>
